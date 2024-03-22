@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Vector2 move;
-    private Vector2 jump;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -28,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public void movePlayer()
     {
         Vector3 movement = new Vector3(move.x, 0f, move.y);
-
+        
         if(movement.magnitude > 0.01f) { 
            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.15f);
         }
