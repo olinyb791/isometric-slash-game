@@ -211,17 +211,6 @@
                     "action": "Slash",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a8b5d02e-10a7-4660-acd2-a168b8f649c8",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "Slash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         }
