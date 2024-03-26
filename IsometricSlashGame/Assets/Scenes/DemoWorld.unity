@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4492901, g: 0.4993629, b: 0.5757074, a: 1}
+  m_IndirectSpecularColor: {r: 0.44824475, g: 0.49827188, b: 0.5755814, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -668,8 +668,8 @@ Transform:
   m_GameObject: {fileID: 522623040}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.04, y: 2.5, z: 0.04}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 0.04, y: 4, z: 0.04}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1329466009}
@@ -812,8 +812,8 @@ GameObject:
   - component: {fileID: 629195401}
   - component: {fileID: 629195403}
   - component: {fileID: 629195402}
-  m_Layer: 0
-  m_Name: Particle System
+  m_Layer: 4
+  m_Name: Water Fountain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,7 +855,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 92c92bf2af4a379469ef316d091a6ed1, type: 2}
+  - {fileID: 2100000, guid: b590eb81e326928499ada1db7fe2525a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1745,7 +1745,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 300
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -2199,7 +2199,7 @@ ParticleSystem:
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 34502
+        atime0: 50308
         atime1: 65535
         atime2: 65535
         atime3: 0
@@ -9155,7 +9155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 81690b911befc064fbc9941e307a9463, type: 2}
+  - {fileID: 2100000, guid: b590eb81e326928499ada1db7fe2525a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
