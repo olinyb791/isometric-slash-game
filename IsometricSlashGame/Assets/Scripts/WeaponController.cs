@@ -8,7 +8,9 @@ public class WeaponController : MonoBehaviour
 {
     public GameObject Sword;
     public bool CanAttack = true;
-    public float AttackCooldown = 1.0f;
+    public float AttackCooldown = 0.6f;
+    public bool IsAttacking = false;
+    public bool HasAttacked = false;
 
     public void OnSlash(InputAction.CallbackContext context)
     {
@@ -28,6 +30,7 @@ public class WeaponController : MonoBehaviour
 
     public void SwordAttack()
     {
+        IsAttacking = true;
         CanAttack = false;
         Animator anim = Sword.GetComponent<Animator>();
         anim.SetTrigger("Attack");
@@ -36,8 +39,16 @@ public class WeaponController : MonoBehaviour
 
     IEnumerator ResetAttackCooldown()
     {
+        StartCoroutine(ResetAttackBool());
         yield return new WaitForSeconds(AttackCooldown);
         CanAttack = true;
+        HasAttacked = false;
+    }
+
+    IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(0.7f);
+        IsAttacking = false;
     }
 
 
