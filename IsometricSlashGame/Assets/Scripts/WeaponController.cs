@@ -11,31 +11,82 @@ public class WeaponController : MonoBehaviour
     public float AttackCooldown = 0.6f;
     public bool IsAttacking = false;
     public bool HasAttacked = false;
+    public bool inCombatState = false;
+    public Camera mainCamera;
+    public Transform player;
+    [SerializeField] private float combatCooldown = 0f;
+    private float combatCooldownDuration = 15f;
 
     public void OnSlash(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if (CanAttack)
+            
+            if (inCombatState)
             {
+                ResetCombatState();
                 SwordAttack();
             }
+
+            if (!inCombatState)
+            {
+                EnterCombatState();
+                SwordAttack();
+            }
+
         }
     }
 
     void Update()
     {
- 
+        if (inCombatState)
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                //Hämtar i våran 3D värld där rayen träffar
+                Vector3 cursorWorldPosition = hit.point;
+
+                Vector3 direction = cursorWorldPosition - player.position;
+                direction.y = 0f;
+                player.rotation = Quaternion.LookRotation(direction);
+            }
+
+        }
+
+        if (combatCooldown <= 0f) {
+            inCombatState = false;
+        } else
+        {
+            combatCooldown -= Time.deltaTime;
+        }
     }
 
     public void SwordAttack()
     {
         IsAttacking = true;
         CanAttack = false;
+
         Animator anim = Sword.GetComponent<Animator>();
+
         anim.SetTrigger("Attack");
         StartCoroutine(ResetAttackCooldown());
     } 
+
+    private void EnterCombatState()
+    {
+        Debug.Log("Entered combat state");
+        inCombatState = true;
+        combatCooldown = combatCooldownDuration;
+    }
+
+    private void ResetCombatState()
+    {
+        Debug.Log("Reset combat state");
+        combatCooldown = combatCooldownDuration;
+    }
 
     IEnumerator ResetAttackCooldown()
     {

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public WeaponController wc;
     public float speed;
     private Vector2 move;
 
