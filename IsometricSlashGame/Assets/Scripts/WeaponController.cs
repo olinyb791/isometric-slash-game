@@ -22,13 +22,13 @@ public class WeaponController : MonoBehaviour
         if (context.performed)
         {
             
-            if (inCombatState)
+            if (inCombatState && !IsAttacking)
             {
                 ResetCombatState();
                 SwordAttack();
             }
 
-            if (!inCombatState)
+            if (!inCombatState && !IsAttacking)
             {
                 EnterCombatState();
                 SwordAttack();
