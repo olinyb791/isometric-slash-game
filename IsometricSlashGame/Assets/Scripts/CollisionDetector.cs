@@ -12,9 +12,10 @@ public class CollisionDetector : MonoBehaviour
     {
         if (other.tag == "Enemy" && wc.IsAttacking && wc.HasAttacked == false)
         {
-            Debug.Log(other.name);
             other.GetComponent<Animator>().SetTrigger("Hit");
+            wc.SwordHit(other, 10);
             //Instantiate(HitParticle, new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), other.transform.rotation);
         }
     }
 }
+

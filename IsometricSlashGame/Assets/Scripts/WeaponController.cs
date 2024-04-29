@@ -73,18 +73,26 @@ public class WeaponController : MonoBehaviour
 
         anim.SetTrigger("Attack");
         StartCoroutine(ResetAttackCooldown());
-    } 
+    }
+
+    public void SwordHit(Collider other, int dmg)
+    {
+        Debug.Log("Träffade något" + other.tag);
+        if (other.tag == "Enemy" && IsAttacking && !HasAttacked)
+        {
+            other.GetComponent<EnemyHealth>().TakeDamage(dmg);
+            HasAttacked = true;
+        }
+    }
 
     private void EnterCombatState()
     {
-        Debug.Log("Entered combat state");
         inCombatState = true;
         combatCooldown = combatCooldownDuration;
     }
 
     private void ResetCombatState()
     {
-        Debug.Log("Reset combat state");
         combatCooldown = combatCooldownDuration;
     }
 

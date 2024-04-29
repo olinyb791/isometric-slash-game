@@ -38,23 +38,21 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+   /* private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Weapon" && wc.IsAttacking && wc.HasAttacked == false)
+        if (other.tag == "Weapon" && this.tag == "Enemy" && wc.IsAttacking && !wc.HasAttacked)
         {
             Debug.Log("Snälla ta skada");
             TakeDamage(10);
             wc.HasAttacked = true;
         }
-    }
+    }*/
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
         healthBar.setHealth(currentHealth);
-
-
     }
 
     IEnumerator Dying()
