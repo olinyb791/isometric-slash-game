@@ -11,6 +11,8 @@ public class PlayerMovment : MonoBehaviour
 
     public float groundDrag;
 
+    public float airMultiplier;
+
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
@@ -29,14 +31,13 @@ public class PlayerMovment : MonoBehaviour
     Rigidbody rb;
 
     public MovementState state;
-
+    
     public enum MovementState
     {
         walking,
         sprinting,
         air
     }
-
 
     // Start is called before the first frame update
     void Start()
@@ -100,7 +101,18 @@ public class PlayerMovment : MonoBehaviour
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        // on ground
+        if(grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
+
+        // in air
+        else if(!grounded)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
+        }
+            
     }
 
     private void SpeedControl()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
+/*
 public class ThrowingItems : MonoBehaviour
 {
     [Header("References")]
@@ -62,3 +63,4 @@ public class ThrowingItems : MonoBehaviour
         readyToThrow = true;
     }
 }
+*/
