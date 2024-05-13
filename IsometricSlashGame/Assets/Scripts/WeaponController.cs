@@ -9,6 +9,7 @@ public class WeaponController : MonoBehaviour
     public GameObject Sword;
     public bool CanAttack = true;
     public float AttackCooldown = 0.6f;
+    public float AttackDuration = 0.7f;
     public bool IsAttacking = false;
     public bool HasAttacked = false;
     public bool inCombatState = false;
@@ -22,13 +23,13 @@ public class WeaponController : MonoBehaviour
         if (context.performed)
         {
             
-            if (inCombatState && !IsAttacking)
+            if (inCombatState && !IsAttacking && CanAttack)
             {
                 ResetCombatState();
                 SwordAttack();
             }
 
-            if (!inCombatState && !IsAttacking)
+            if (!inCombatState && !IsAttacking && CanAttack)
             {
                 EnterCombatState();
                 SwordAttack();

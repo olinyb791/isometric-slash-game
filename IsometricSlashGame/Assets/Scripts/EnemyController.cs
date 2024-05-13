@@ -35,8 +35,10 @@ public class EnemyController : MonoBehaviour
                     //Face the target
                     FaceTarget();
                     //Attack the target
-                    enemyCombat.EnemyAttack();
-
+                    if (enemyCombat.enemyCanAttack)
+                    {
+                        enemyCombat.EnemyAttack();
+                    }
                 }
             }
         }

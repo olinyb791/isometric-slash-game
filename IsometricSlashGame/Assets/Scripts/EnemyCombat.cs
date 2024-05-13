@@ -6,7 +6,8 @@ using UnityEngine;
 public class EnemyCombat : MonoBehaviour
 {
     public GameObject Sword;
-    public float AttackCooldown = 5.0f;
+    [SerializeField] private float AttackCooldown = 3.0f;
+    [SerializeField] private float AttackDuration = 2.0f;
     public bool enemyIsAttacking = false;
     public bool enemyHasAttacked = false;
     public bool enemyCanAttack = true;
@@ -33,10 +34,16 @@ public class EnemyCombat : MonoBehaviour
 
     IEnumerator EnemyAttackCooldown()
     {
+        StartCoroutine (EnemyAttackDuration());
         yield return new WaitForSeconds(AttackCooldown);
-        enemyIsAttacking = false;
         enemyHasAttacked = false;
         enemyCanAttack = true;
+    }
+
+    IEnumerator EnemyAttackDuration()
+    {
+        yield return new WaitForSeconds(AttackDuration);
+        enemyIsAttacking = false;
     }
 
     // Start is called before the first frame update
