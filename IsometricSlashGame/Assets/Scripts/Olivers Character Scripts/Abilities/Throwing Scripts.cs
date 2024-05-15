@@ -21,6 +21,7 @@ public class ThrowingScripts : MonoBehaviour
     public float throwUpwardForce;
 
     [Header("Grenade Options")]
+    public int explosionDamage = 0;
     public float explosionTimer = 0;
     public float explosionRadius = 0;
 
@@ -48,12 +49,12 @@ public class ThrowingScripts : MonoBehaviour
 
     }
 
-    private void Throw()
+    public void Throw()
     {
         readyToThrow = false;
 
         //Instantiate object to throw
-        GameObject projectile = Instantiate(objectToThrow, attackPoint.position, cam.rotation);
+        GameObject projectile = (GameObject)Instantiate(objectToThrow, attackPoint.position, cam.rotation);
 
         //Get the rigidbody component
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>(); 
@@ -65,7 +66,7 @@ public class ThrowingScripts : MonoBehaviour
 
         //ActivateGrenade();
         totalThrows--;
-        StartCoroutine(GrenadeTimer());
+        StartCoroutine(GrenadeTimer(projectile));
 
         //Implement throwCooldown
         Invoke(nameof(ResetThrow), throwCooldown);
@@ -80,10 +81,19 @@ public class ThrowingScripts : MonoBehaviour
         
     }*/
 
-    IEnumerator GrenadeTimer()
+    IEnumerator GrenadeTimer(GameObject projectile)
     {
         yield return new WaitForSeconds(explosionTimer);
         Debug.Log("Explodera");
+        Collider[] hits = Physics.OverlapSphere(projectile.transform.position, explosionRadius);
+        foreach (Collider hit in hits)
+        {
+            if (hit.CompareTag("Enemy"))
+            {
+                hit.GetComponent<EnemyHealth>().TakeDamage(explosionDamage);
+            }
+        }
+        Destroy(projectile);
 
     }
 
