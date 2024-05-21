@@ -1743,6 +1743,7 @@ GameObject:
   - component: {fileID: 1440305366}
   - component: {fileID: 1440305368}
   - component: {fileID: 1440305370}
+  - component: {fileID: 1440305371}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerCharacter
@@ -1831,15 +1832,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440305361}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 884260355}
   - {fileID: 1666405404}
+  - {fileID: 1801893189}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
 --- !u!114 &1440305366
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1954,6 +1956,30 @@ MonoBehaviour:
   mainCamera: {fileID: 963194227}
   player: {fileID: 1440305365}
   combatCooldown: 0
+--- !u!114 &1440305371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440305361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7041d3d3664ea1c46af472fa1bc5b92f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 884260355}
+  attackPoint: {fileID: 1801893189}
+  objectToThrow: {fileID: 5728069126598431641, guid: 07f97014debb6734a8428e483c498d6e, type: 3}
+  totalThrows: 100
+  throwCooldown: 1
+  throwKey: 324
+  throwForce: 52
+  throwUpwardForce: 10
+  bigExploisionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
+  explosionDamage: 20
+  explosionTimer: 2
+  explosionRadius: 4
 --- !u!1 &1666405403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,6 +2035,37 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   player: {fileID: 0}
   combatCooldown: 0
+--- !u!1 &1801893188
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1801893189}
+  m_Layer: 0
+  m_Name: ThrowAttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1801893189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801893188}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1440305365}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1856131849853499021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2068,6 +2125,10 @@ PrefabInstance:
     - target: {fileID: 5024402972109258693, guid: fc051ff3b07a261499e0f2ba612d42b8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711917242504724926, guid: fc051ff3b07a261499e0f2ba612d42b8, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5995735528306164964, guid: fc051ff3b07a261499e0f2ba612d42b8, type: 3}
       propertyPath: wc
