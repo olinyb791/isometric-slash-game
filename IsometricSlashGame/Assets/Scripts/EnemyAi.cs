@@ -82,6 +82,9 @@ public class EnemyAi : MonoBehaviour
         {
             // Attack code
 
+
+            //
+
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
@@ -89,7 +92,7 @@ public class EnemyAi : MonoBehaviour
 
     private void ResetAttack()
     {
-
+        alreadyAttacked = false;
     }
 
     private void OnDrawGizmosSelected()
