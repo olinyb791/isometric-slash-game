@@ -21,6 +21,7 @@ public class ThrowingScripts : MonoBehaviour
     public float throwUpwardForce;
 
     [Header("Grenade Options")]
+    public GameObject bigExploisionPrefab;
     public int explosionDamage = 0;
     public float explosionTimer = 0;
     public float explosionRadius = 0;
@@ -85,6 +86,7 @@ public class ThrowingScripts : MonoBehaviour
     {
         yield return new WaitForSeconds(explosionTimer);
         Debug.Log("Explodera");
+        Instantiate(bigExploisionPrefab, new Vector3(projectile.transform.position.x, projectile.transform.position.y, projectile.transform.position.z), projectile.transform.rotation);
         Collider[] hits = Physics.OverlapSphere(projectile.transform.position, explosionRadius);
         foreach (Collider hit in hits)
         {

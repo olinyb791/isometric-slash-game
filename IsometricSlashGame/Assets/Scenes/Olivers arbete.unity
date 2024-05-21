@@ -1972,10 +1972,11 @@ MonoBehaviour:
   attackPoint: {fileID: 1801893189}
   objectToThrow: {fileID: 5728069126598431641, guid: 07f97014debb6734a8428e483c498d6e, type: 3}
   totalThrows: 100
-  throwCooldown: 0.1
+  throwCooldown: 1
   throwKey: 324
   throwForce: 52
   throwUpwardForce: 10
+  bigExploisionPrefab: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664, type: 3}
   explosionDamage: 20
   explosionTimer: 2
   explosionRadius: 4
