@@ -112,7 +112,13 @@ public class PlayerMovment : MonoBehaviour
         {
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force);
         }
-            
+
+        if(moveDirection.magnitude > 0.01f)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveDirection), 0.15f);
+        }
+
+
     }
 
     private void SpeedControl()

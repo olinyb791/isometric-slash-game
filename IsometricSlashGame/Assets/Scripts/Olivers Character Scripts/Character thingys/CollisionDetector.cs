@@ -6,7 +6,7 @@ using UnityEngine;
 public class CollisionDetector : MonoBehaviour
 {
     public WeaponController wc;
-    public GameObject HitParticle;
+    //public GameObject HitParticle;
 
     private void OnTriggerStay(Collider other)
     {
